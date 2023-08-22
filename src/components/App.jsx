@@ -11,9 +11,9 @@ export const App = () => {
     <div>
       <header className={css.header}>
         <ul className={css.headerNav}>
-          <li> 
+          {/* <li> 
             <NavLink to="/"><img src="../../public/logo/logo.svg" alt='logo' weight="100px"/></NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/" className={css.link}>
               <button type="button" className={css.headerNavBtn}>
