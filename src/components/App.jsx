@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
 import { Route, Routes, NavLink } from 'react-router-dom';
 
 import css from './styles.module.css';
 
 import { Foooter } from './footer/footer';
 import Home from '../pages/Home';
+import { ReactComponent as Logo } from 'images/logo.svg'
 
 export const App = () => {
   return (
     <div>
       <header className={css.header}>
         <ul className={css.headerNav}>
-          {/* <li> 
-            <NavLink to="/"><img src="../../public/logo/logo.svg" alt='logo' weight="100px"/></NavLink>
-          </li> */}
+          <li>
+            <NavLink to="https://www.themoviedb.org">
+              <Logo className={css.logo} />
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/" className={css.link}>
-              <button type="button" className={css.headerNavBtn}>
+              <button
+                type="button"
+                className={`${css.headerNavBtn} ${css.headerNavBtnLeft}`}
+              >
                 Home
               </button>
             </NavLink>
@@ -35,7 +41,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<div>Movies</div>}>
-            <Route path="/movies/:movieId" element={<div>Movies</div>}>
+            <Route path="/movies/:movieId" element={<div>Елемент колекції</div>}>
               <Route path="/movies/:movieId/cast" element={<div>Movies</div>} />
               <Route
                 path="/movies/:movieId/reviews"
@@ -57,4 +63,3 @@ export const App = () => {
 // /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
 // /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
 
-// 1c102e66bbcfd2f02de567c2b0418712
