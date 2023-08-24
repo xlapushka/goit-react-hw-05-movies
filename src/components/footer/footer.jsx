@@ -1,6 +1,6 @@
 import css from '../styles.module.css';
 
-export function Foooter() {
+const Footer = () => {
   return (
     <footer>
       <small>
@@ -36,3 +36,5 @@ export function Foooter() {
     </footer>
   );
 }
+
+export default Footer

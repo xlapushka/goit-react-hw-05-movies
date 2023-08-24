@@ -57,7 +57,7 @@ img {
 
 a {
   color: inherit;
-  padding: 0 2px;
+  /* padding: 0 2px; */
   text-decoration: none;
   font-size: larger;
 }
@@ -70,7 +70,7 @@ a {
 
 /* ===================================================== */
 
-header {
+.header {
   position: fixed;
 
   height: 60px;
@@ -210,6 +210,18 @@ h1 {
 
 span {
   font-weight: bolder;
+}
+
+.movieCardLinkList {
+  list-style-type: none;
+  /* border: 1px solid grey; */
+  padding: 2px 0;
+  margin: 0;
+}
+
+.movieCardLinkListA {
+  font-size: 16px;
+  text-decoration: underline;
 }
 
 

@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
+
 import css from '../styles.module.css';
 
 const MovieCard = ({ poster, title, year, voteAverage, voteCount, overview, genres}) => {
@@ -10,26 +12,39 @@ const MovieCard = ({ poster, title, year, voteAverage, voteCount, overview, genr
         {title} ({year})
       </h1>
 
-        <div className={css.movieCardFlex}>
-          <img src={poster} width="200px" alt="movie poster" />
-        <div className={ css.movieCardParams}>
-            <p><span>Vote average:  </span> {voteAverage}</p>
-            <p><span>Vote count:  </span> {voteCount}</p>
-            <p><span>Genres:  </span> {genres}</p>   
+      <div className={css.movieCardFlex}>
+        <img src={poster} width="200px" alt="movie poster" />
+        <div className={css.movieCardParams}>
+          <p>
+            <span>Vote average: </span> {voteAverage}
+          </p>
+          <p>
+            <span>Vote count: </span> {voteCount}
+          </p>
+          <p>
+            <span>Genres: </span> {genres}
+          </p>
 
           <div>
-              <br></br>
-              <p><span>Additional Information:</span></p>
-              <ul>
-                <li>Cast</li>
-                <li>Reviews</li>
-                </ul>
-            </div>
-
+            <br></br>
+            <p>
+              <span>Additional Information:</span>
+            </p>
+            <ul className={css.movieCardLinkList}>
+              <Link to={'cast'}>
+                <li className={css.movieCardLinkListA}>Cast</li>
+              </Link>
+              <Link to={'reviews'}>
+                <li className={css.movieCardLinkListA}>Reviews</li>
+              </Link>
+            </ul>
           </div>
         </div>
-      
-      <p><span>Overview:</span> {overview}</p>
+      </div>
+
+      <p>
+        <span>Overview:</span> {overview}
+      </p>
     </div>
   );
 }

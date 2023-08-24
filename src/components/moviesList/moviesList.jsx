@@ -7,7 +7,7 @@ import css from '../styles.module.css';
 
 const MoviesList = ({ moviesList }) => {
   return (
-    <ul>
+    <ul >
       {moviesList.map(movie => {
         return (
           <Link
