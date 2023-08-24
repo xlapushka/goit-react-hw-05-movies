@@ -1,35 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-import { Loader } from '../components/loader/loader';
-// import { Link } from 'react-router-dom';
+import Loader from '../components/loader/loader';
+import MoviesList  from 'components/moviesList/moviesList';
 
-// import css from '../components/styles.module.css';
-
-import { getTrendingMovies } from '../api/apiMovieList';
-import { TrendingMoviesList } from 'components/trendingMovies/trendingMovies';
+import { getTrendingMoviesList } from '../api/apiTrendingMoviesList';
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
-  const [trendingMovies, setTrendingMovies] = useState([]);
+  const [trendingMoviesList, setTrendingMoviesList] = useState([]);
 
   useEffect(() => {
     setLoading(true);
 
-    getTrendingMovies()
+    getTrendingMoviesList()
       .then(trendingMoviesList => {
-        setTrendingMovies(trendingMoviesList);
+        setTrendingMoviesList(trendingMoviesList);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
 
-
   return (
     <div>
       <h1>Trending today</h1>
       {loading && <Loader />}
-      <TrendingMoviesList trendingMovies={trendingMovies} />
+      <MoviesList moviesList={trendingMoviesList} />
     </div>
   );
 };

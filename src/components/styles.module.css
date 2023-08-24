@@ -150,7 +150,41 @@ h1 {
 
 .movieListLi a {
   text-decoration: none;
+}
 
+.input {
+  font-size: 24px;
+  margin-top: 36px;
+
+  padding: 6px 12px;
+  background-color: #f7faff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  border: 0.5px solid lightgray;
+  border-radius: 6px;
+  width: 300px;
+  font-size: 16px;
+}
+
+.submitBtn {
+    display: inline-block;
+    margin: 0 auto;
+    
+    margin-left: 4px;
+    padding: 6px 12px;
+    background-color: #f7faff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border: 0.5px solid lightgray;
+    border-radius: 6px;
+    font-size: 16px;
+    /* font-weight: bold; */
+    
+    cursor: pointer;
+  
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  }
+
+    .submitBtn:is(:hover, :focus) {
+    box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.35);
 }
 
 

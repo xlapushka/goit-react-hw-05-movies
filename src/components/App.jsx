@@ -5,7 +5,9 @@ import css from './styles.module.css';
 
 import { Foooter } from './footer/footer';
 import Home from '../pages/Home';
-import { ReactComponent as Logo } from 'images/logo.svg'
+import Movies from '../pages/Movies';
+import Movie from '../pages/Movie';
+import { ReactComponent as Logo } from 'images/logo.svg';
 
 export const App = () => {
   return (
@@ -40,8 +42,9 @@ export const App = () => {
       <section className={css.section}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/movies" element={<div>Movies</div>}>
-            <Route path="/movies/:movieId" element={<div>Елемент колекції</div>}>
+          {/* <Route index element={<Movie />} /> */}
+          <Route path="/movies" element={<Movies/>}>
+            <Route path="/movies/:movieId" element={<Movie />}>
               <Route path="/movies/:movieId/cast" element={<div>Movies</div>} />
               <Route
                 path="/movies/:movieId/reviews"
@@ -57,9 +60,4 @@ export const App = () => {
   );
 };
 
-// /trending/get-trending список найпопулярніших фільмів на сьогодні для створення колекції на головній сторінці.
-// /search/search-movies пошук фільму за ключовим словом на сторінці фільмів.
-// /movies/get-movie-details запит повної інформації про фільм для сторінки кінофільму.
-// /movies/get-movie-credits запит інформації про акторський склад для сторінки кінофільму.
-// /movies/get-movie-reviews запит оглядів для сторінки кінофільму.
 

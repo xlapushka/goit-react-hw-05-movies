@@ -1,6 +1,6 @@
 
 
-export async function getTrendingMovies() {
+export async function getTrendingMoviesList() {
   const fetch = require('node-fetch');
 
   const url = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US';
@@ -13,13 +13,15 @@ export async function getTrendingMovies() {
     },
   };
   try {
-  const res = await fetch(url, options);
-  const json = await res.json();
-  const trendingMoviesList = json.results;
+    const res = await fetch(url, options);
+    const json = await res.json();
+    const trendingMoviesList = json.results;
 
-  return trendingMoviesList ;
+    return trendingMoviesList;
+  } catch (err) {
+    return console.error('error:' + err);
   }
-  catch (err) { return console.error('error:' + err); }
-  
 }; 
+
+
 
