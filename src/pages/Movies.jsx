@@ -31,7 +31,7 @@ const Movies = () => {
             setMoviesList(moviesList);
           }
         })
-        .finally(() => {
+        .finally(() => { 
           setLoading(false);
         });
     }

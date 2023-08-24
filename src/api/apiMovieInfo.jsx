@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 
-export async function getMoviesList({ keyWord }) {
+export async function getMovieInfo(movieId) {
   const fetch = require('node-fetch');
 
-  const url = `https://api.themoviedb.org/3/search/movie?query=${keyWord}&include_adult=false&language=en-US&page=1`;
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
   const options = {
     method: 'GET',
     headers: {
@@ -16,17 +16,23 @@ export async function getMoviesList({ keyWord }) {
   try {
     const res = await fetch(url, options);
     const json = await res.json();
-    const moviesList = json.results;
-    const total = json.total_results;
 
-    // console.log('moviesList', json.total_results);
+    const poster = json.poster_path;
+    const title = json.title;
+    const vote_average = json.vote_average;
+    const vote_count = json.vote_count;
+    const year = json.release_date;
+    const overview = json.overview;
+    const genres = json.genres;
 
-    return { moviesList, total };
+    // console.log('movieInfo', json.genres);
+
+    return { poster, title, vote_average, vote_count, year, overview, genres };
   } catch (err) {
     return console.error('error:' + err);
   }
 }
 
-getMoviesList.propTypes = {
-  keyWord: PropTypes.string,
+getMovieInfo.propTypes = {
+  movieId: PropTypes.string,
 };

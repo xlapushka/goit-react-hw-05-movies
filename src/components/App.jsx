@@ -43,14 +43,10 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           {/* <Route index element={<Movie />} /> */}
-          <Route path="/movies" element={<Movies/>}>
-            <Route path="/movies/:movieId" element={<Movie />}>
-              <Route path="/movies/:movieId/cast" element={<div>Movies</div>} />
-              <Route
-                path="/movies/:movieId/reviews"
-                element={<div>Movies</div>}
-              />
-            </Route>
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<Movie />}>
+            <Route path="/movies/:movieId/cast" element={<div>Movies Cast</div>} />
+            <Route path="/movies/:movieId/reviews" element={<div>Movies Reviews</div>}/>
           </Route>
         </Routes>
       </section>
@@ -59,5 +55,3 @@ export const App = () => {
     </div>
   );
 };
-
-
