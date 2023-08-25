@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import css from '../components/styles.module.css';
+
 import Loader from 'components/loader/loader';
 import MovieCard from 'components/movieCard/movieCard';
 
 import { getMovieInfo } from '../api/apiMovieInfo';
-import { useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 
 const Movie = () => {
   const [loading, setLoading] = useState(false);
@@ -52,7 +54,7 @@ const Movie = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={css.movieAdditionalInfo}>
       {loading && <Loader />}
 
       <MovieCard
@@ -64,6 +66,7 @@ const Movie = () => {
         overview={overview}
         genres={genres}
       />
+      <Outlet />
     </div>
   );
 };

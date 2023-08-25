@@ -44,7 +44,7 @@ const Movies = () => {
   return (
     <div>
       <SearchMovie changeKeyWord={changeKeyWord} />
-      {loading && !moviesList && <Loader />}
+      {loading && <Loader />}
       {!loading && <MoviesList moviesList={moviesList} />}
     </div>
   );
