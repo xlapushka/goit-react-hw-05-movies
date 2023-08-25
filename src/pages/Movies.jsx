@@ -16,7 +16,7 @@ const Movies = () => {
 
   useEffect(() => {
     if (keyWord === '') {
-      Notiflix.Notify.warning('Please enter something to search!');
+      // Notiflix.Notify.warning('Please enter something to search!');
       setMoviesList([]);
       return;
     } else {

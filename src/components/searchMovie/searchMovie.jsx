@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import css from '../styles.module.css';
 
 
 const SearchMovie = ({ changeKeyWord }) => {
-  const [keyWord, setKeyWord] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [keyWord, setKeyWord] = useState(searchParams.get('query') ?? '');
 
   const handleChange = event => {
     setKeyWord(event.target.value);
@@ -13,12 +15,19 @@ const SearchMovie = ({ changeKeyWord }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    setSearchParams({ query: `${keyWord.trim()}` })
     changeKeyWord(keyWord.trim());
   };
 
+  useEffect(() => {
+    changeKeyWord(keyWord);
+  }, []);
+
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={handleSubmit}
+      >
         <input
           className={css.input}
           value={keyWord}
