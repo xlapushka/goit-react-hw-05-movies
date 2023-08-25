@@ -9,6 +9,7 @@ import MovieCard from 'components/movieCard/movieCard';
 import { getMovieInfo } from '../api/apiMovieInfo';
 import { Outlet, useParams } from 'react-router-dom';
 
+
 const Movie = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
@@ -34,6 +35,7 @@ const Movie = () => {
           vote_count,
           overview,
           genres,
+          movieId
         }) => {
           setPoster(
             'https://www.themoviedb.org/t/p/w300_and_h450_bestv2' + poster
@@ -55,6 +57,7 @@ const Movie = () => {
 
   return (
     <div className={css.movieAdditionalInfo}>
+
       {loading && <Loader />}
 
       <MovieCard

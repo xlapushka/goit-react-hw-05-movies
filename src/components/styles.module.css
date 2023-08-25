@@ -189,7 +189,7 @@ h1 {
 
 .movieCard {
   font-size: 16px;
-  width: 40%;
+  width: 48%;
 
   display: flex;
   flex-direction: column;
@@ -256,6 +256,32 @@ span {
   display: flex;
   flex-direction: column;
   gap: 4px
+}
+
+.headerBtnGoBack {
+    margin: 0 auto;
+    
+    padding: 2px 12px;
+    background-color: #CBCFD3;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border: 0.5px solid darkgrey;
+    border-radius: 6px;
+    font-size: 16px;
+    
+    cursor: pointer;
+  
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
+}
+
+    .headerBtnGoBack:is(:hover, :focus) {
+    box-shadow: 2px 8px 8px rgba(0, 0, 0, 0.35);
+}
+
+.movieCardFlex2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 

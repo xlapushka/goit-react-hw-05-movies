@@ -4,13 +4,30 @@ import { Link } from 'react-router-dom';
 
 import css from '../styles.module.css';
 
-const MovieCard = ({ poster, title, year, voteAverage, voteCount, overview, genres}) => {
+import { useLocation } from 'react-router-dom';
 
+import { useRef } from 'react';
+
+const MovieCard = ({ poster, title, year, voteAverage, voteCount, overview, genres, movieId}) => {
+  const location = useLocation();
+  const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
+ 
+  
   return (
     <div className={css.movieCard}>
-      <h1>
-        {title} ({year})
-      </h1>
+      <div className={css.movieCardFlex2}>
+        <h1>
+          {title} ({year})
+        </h1>
+        <Link
+          to={backLinkLocationRef.current}
+          className={css.link}
+        >
+          <button type="button" className={css.headerBtnGoBack}>
+            ⬅️ Go Back
+          </button>
+        </Link>
+      </div>
 
       <div className={css.movieCardFlex}>
         <img src={poster} width="200px" alt="movie poster" />
@@ -59,4 +76,5 @@ MovieCard.propTypes = {
   voteCount: PropTypes.number,
   overview: PropTypes.string,
   genres: PropTypes.string,
+  movieId: PropTypes.string,
 };

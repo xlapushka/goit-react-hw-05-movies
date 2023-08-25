@@ -7,12 +7,14 @@ import SearchMovie from 'components/searchMovie/searchMovie';
 import MoviesList from 'components/moviesList/moviesList';
 
 import { getMoviesList } from '../api/apiMoviesList';
+// import { useLocation } from 'react-router-dom';
 
 
 const Movies = () => {
   const [keyWord, setKeyWord] = useState('');
   const [loading, setLoading] = useState(false);
   const [moviesList, setMoviesList] = useState([]);
+  // const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     if (keyWord === '') {
@@ -38,6 +40,8 @@ const Movies = () => {
   }, [keyWord]);
 
   const changeKeyWord = keyWord => {
+    // ========= забрати з query було б простійше, звісно, але вже понапідставляла палок)) =======
+    // console.log(searchParams.get('query'), 'query');
     if (keyWord === ' ') { console.log('empty', keyWord) };
     setKeyWord(keyWord);
   };
