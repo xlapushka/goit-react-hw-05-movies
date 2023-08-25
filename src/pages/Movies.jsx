@@ -38,6 +38,7 @@ const Movies = () => {
   }, [keyWord]);
 
   const changeKeyWord = keyWord => {
+    if (keyWord === ' ') { console.log('empty', keyWord) };
     setKeyWord(keyWord);
   };
 

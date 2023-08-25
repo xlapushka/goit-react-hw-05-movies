@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import css from '../styles.module.css';
 
-
 const SearchMovie = ({ changeKeyWord }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [keyWord, setKeyWord] = useState(searchParams.get('query') ?? '');
+  const keyWordMontage = useRef(keyWord);
+
+  useEffect(() => {
+    changeKeyWord(keyWordMontage.current);
+  }, [changeKeyWord, keyWordMontage]);
 
   const handleChange = event => {
     setKeyWord(event.target.value);
@@ -15,19 +19,19 @@ const SearchMovie = ({ changeKeyWord }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    setSearchParams({ query: `${keyWord.trim()}` })
-    changeKeyWord(keyWord.trim());
+    if (keyWord.trim() !== '') {
+      setSearchParams({ query: `${keyWord.trim()}` });
+      changeKeyWord(keyWord.trim());
+    }
+    if (keyWord === '') {
+      setSearchParams({});
+      changeKeyWord('       ');
+    }
   };
-
-  useEffect(() => {
-    changeKeyWord(keyWord);
-  }, []);
 
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
-      >
+      <form onSubmit={handleSubmit}>
         <input
           className={css.input}
           value={keyWord}
@@ -50,4 +54,4 @@ SearchMovie.propTypes = {
   changeKeyWord: PropTypes.func.isRequired,
 };
 
-export default SearchMovie
+export default SearchMovie;
