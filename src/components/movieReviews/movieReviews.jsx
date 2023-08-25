@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// import css from '../components/styles.module.css';
-
 import Loader from 'components/loader/loader';
 
 import { getMovieReviews } from '../../api/apiMovieViewReview';
+import MovieReviewsList from '../movieReviewsList/movieReviewsList'
 import { useParams } from 'react-router-dom';
 
 const MovieReviews = () => {
   const [loading, setLoading] = useState(false);
   const { movieId } = useParams();
+  const [reviewsList, setReviewsList] = useState([]);
 
-  // const [poster, setPoster] = useState();
 
   useEffect(() => {
     setLoading(true);
 
     getMovieReviews(movieId)
       .then(resp => {
-        console.log(resp);
+        setReviewsList(resp);
       })
       .finally(() => {
         setLoading(false);
@@ -30,7 +29,13 @@ const MovieReviews = () => {
     <div>
       {loading && <Loader />}
 
-      <p> Movie Reviews Component</p>
+      <h1>Movie Reviews</h1>
+      {reviewsList.length !== 0 && (
+        <MovieReviewsList reviewsList={reviewsList} />
+      )}
+      {reviewsList.length === 0 && (
+        <p> Sorry, there are no reviews yet.. </p>
+      )}
     </div>
   );
 };

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-// import css from '../components/styles.module.css';
-
 import Loader from 'components/loader/loader';
 
 import { getMovieCast } from '../../api/apiMovieCast';

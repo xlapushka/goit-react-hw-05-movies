@@ -13,7 +13,7 @@ const MovieCastList = ({ castList }) => {
 
         return (
           <li key={person.id} className={css.movieCastListLi}>
-            <img src={src} alt={person.name} width="80px" />
+            <img src={src} alt={person.name} width="80px" height='120px'/>
             <div className={css.movieCastListLiDiv}>
               <p>
                 <span>{person.name} </span>

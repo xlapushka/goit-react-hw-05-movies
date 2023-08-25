@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 export async function getMovieReviews(movieId) {
   const fetch = require('node-fetch');
 
-  const url = `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=en-US&page=1`;
+  const url = `https://api.themoviedb.org/3/movie/${movieId}}/reviews?language=en-US&page=1`;
   const options = {
     method: 'GET',
     headers: {
