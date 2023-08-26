@@ -7,10 +7,9 @@ import css from '../styles.module.css';
 import { useLocation } from 'react-router-dom';
 
 
-const MoviesList = ({ moviesList }) => {
+const MoviesListBySearch = ({ moviesList }) => {
 
 const location = useLocation();
-// console.log(location);
   
   return (
     <ul >
@@ -18,7 +17,7 @@ const location = useLocation();
         return (
           <Link
             key={movie.id}
-            to={`${movie.id}`}
+            to={`/movies/${movie.id}`}
             className={css.list}
             state={{from: location}}
           >
@@ -30,8 +29,8 @@ const location = useLocation();
   );
 };
 
-export default MoviesList;
+export default MoviesListBySearch;
 
-MoviesList.propTypes = {
+MoviesListBySearch.propTypes = {
   moviesList: PropTypes.arrayOf(PropTypes.object),
 };

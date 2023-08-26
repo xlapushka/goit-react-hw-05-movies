@@ -4,11 +4,10 @@ import Notiflix from 'notiflix';
 
 import Loader from 'components/loader/loader';
 import SearchMovie from 'components/searchMovie/searchMovie';
-import MoviesList from 'components/moviesList/moviesList';
+import MoviesListBySearch from 'components/moviesListBySearch/moviesListBySearch';
 
 import { getMoviesList } from '../api/apiMoviesList';
 // import { useLocation } from 'react-router-dom';
-
 
 const Movies = () => {
   const [keyWord, setKeyWord] = useState('');
@@ -28,12 +27,14 @@ const Movies = () => {
         .then(({ moviesList, total }) => {
           if (total === 0) {
             setMoviesList([]);
-            Notiflix.Notify.failure('Sorry, there are no movies matching your search query. Please try again.');
+            Notiflix.Notify.failure(
+              'Sorry, there are no movies matching your search query. Please try again.'
+            );
           } else {
             setMoviesList(moviesList);
           }
         })
-        .finally(() => { 
+        .finally(() => {
           setLoading(false);
         });
     }
@@ -42,7 +43,9 @@ const Movies = () => {
   const changeKeyWord = keyWord => {
     // ========= забрати з query було б простійше, звісно, але вже понапідставляла палок)) =======
     // console.log(searchParams.get('query'), 'query');
-    if (keyWord === ' ') { console.log('empty', keyWord) };
+    if (keyWord === ' ') {
+      console.log('empty', keyWord);
+    }
     setKeyWord(keyWord);
   };
 
@@ -50,7 +53,7 @@ const Movies = () => {
     <div>
       <SearchMovie changeKeyWord={changeKeyWord} />
       {loading && <Loader />}
-      {!loading && <MoviesList moviesList={moviesList} />}
+      {!loading && <MoviesListBySearch moviesList={moviesList} />}
     </div>
   );
 };
