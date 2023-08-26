@@ -1,10 +1,10 @@
+import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 
 import css from '../styles.module.css';
 
 import { ReactComponent as Logo } from 'images/logo.svg';
-import Footer  from '../footer/footer';
-
+import Footer from '../footer/footer';
 
 const Layout = () => {
   return (
@@ -37,15 +37,16 @@ const Layout = () => {
       </header>
       <main>
         <section className={css.section}>
-          <Outlet />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Outlet />
+          </Suspense>
         </section>
       </main>
       <footer>
         <Footer />
-      </footer>  
+      </footer>
     </div>
   );
 };
 
-export default Layout
-
+export default Layout;

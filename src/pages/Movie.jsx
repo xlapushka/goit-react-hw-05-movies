@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import PropTypes from 'prop-types';
 
 import css from '../components/styles.module.css';
@@ -57,7 +57,6 @@ const Movie = () => {
 
   return (
     <div className={css.movieAdditionalInfo}>
-
       {loading && <Loader />}
 
       <MovieCard
@@ -69,7 +68,9 @@ const Movie = () => {
         overview={overview}
         genres={genres}
       />
-      <Outlet />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
