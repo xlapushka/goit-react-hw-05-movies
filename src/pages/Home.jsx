@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import Loader from '../components/loader/loader';
-import MoviesListTrending from 'components/moviesListTrending/moviesListTrending';
-
+import MoviesList from 'components/moviesList/moviesList';
 import { getTrendingMoviesList } from '../api/apiTrendingMoviesList';
 
 const Home = () => {
@@ -25,7 +24,7 @@ const Home = () => {
     <div>
       <h1>Trending today</h1>
       {loading && <Loader />}
-      <MoviesListTrending moviesList={trendingMoviesList} />
+      <MoviesList moviesList={trendingMoviesList} />
     </div>
   );
 };

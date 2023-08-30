@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import Loader from 'components/loader/loader';
-
 import { getMovieCast } from '../../api/apiMovieCast';
 import MovieCastList from '../movieCastList/movieCastList'
-import { useParams } from 'react-router-dom';
+
 
 const MovieCast = () => {
   const [loading, setLoading] = useState(false);
@@ -27,10 +28,13 @@ const MovieCast = () => {
 
   return (
     <div>
-      {loading && <Loader />}
-
       <h1>Movie Cast</h1>
-      <MovieCastList castList={ castList } />
+
+      {loading && <Loader />}
+      <MovieCastList castList={castList} />
+      {castList.length === 0 && !loading && (
+        <p> Sorry, there is no any information yet.. </p>
+      )}
     </div>
   );
 };

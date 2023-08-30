@@ -4,10 +4,8 @@ import Notiflix from 'notiflix';
 
 import Loader from 'components/loader/loader';
 import SearchMovie from 'components/searchMovie/searchMovie';
-import MoviesListBySearch from 'components/moviesListBySearch/moviesListBySearch';
-
+import MoviesList from 'components/moviesList/moviesList';
 import { getMoviesList } from '../api/apiMoviesList';
-// import { useLocation } from 'react-router-dom';
 
 const Movies = () => {
   const [keyWord, setKeyWord] = useState('');
@@ -53,7 +51,7 @@ const Movies = () => {
     <div>
       <SearchMovie changeKeyWord={changeKeyWord} />
       {loading && <Loader />}
-      {!loading && <MoviesListBySearch moviesList={moviesList} />}
+      {!loading && <MoviesList moviesList={moviesList} />}
     </div>
   );
 };

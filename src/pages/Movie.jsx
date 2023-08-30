@@ -1,13 +1,14 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { Outlet, useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import css from '../components/styles.module.css';
 
 import Loader from 'components/loader/loader';
 import MovieCard from 'components/movieCard/movieCard';
-
 import { getMovieInfo } from '../api/apiMovieInfo';
-import { Outlet, useParams } from 'react-router-dom';
+
 
 
 const Movie = () => {

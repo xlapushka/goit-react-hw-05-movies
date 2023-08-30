@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import Loader from 'components/loader/loader';
-
 import { getMovieReviews } from '../../api/apiMovieViewReview';
 import MovieReviewsList from '../movieReviewsList/movieReviewsList'
-import { useParams } from 'react-router-dom';
+
 
 const MovieReviews = () => {
   const [loading, setLoading] = useState(false);
@@ -27,15 +28,13 @@ const MovieReviews = () => {
 
   return (
     <div>
-      {loading && <Loader />}
 
       <h1>Movie Reviews</h1>
+      {loading && <Loader />}
       {reviewsList.length !== 0 && (
         <MovieReviewsList reviewsList={reviewsList} />
       )}
-      {reviewsList.length === 0 && (
-        <p> Sorry, there are no reviews yet.. </p>
-      )}
+      {reviewsList.length === 0 && !loading && <p> Sorry, there are no reviews yet.. </p>}
     </div>
   );
 };

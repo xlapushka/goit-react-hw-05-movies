@@ -1,8 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 import css from '../styles.module.css';
+
 
 const SearchMovie = ({ changeKeyWord }) => {
   const [searchParams, setSearchParams] = useSearchParams();
